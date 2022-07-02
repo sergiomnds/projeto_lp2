@@ -4,16 +4,16 @@ public class Conteiner {
     String identificador;
     String nomeProprietario;
     float pesoCarga;
-    char posicao;
-    public Conteiner(TipoCarga tipoCarga, TipoOperacao tipoOperacao, String nomeProprietario, float pesoCarga, char posicao) {
+    char posicaoPatio;
+    public Conteiner(TipoCarga tipoCarga, TipoOperacao tipoOperacao, String nomeProprietario, float pesoCarga, char posicaoPatio) {
         this.tipoCarga = tipoCarga;
         this.tipoOperacao = tipoOperacao;
         this.nomeProprietario = nomeProprietario;
         this.pesoCarga = pesoCarga;
-        this.posicao = posicao;
+        this.posicaoPatio = posicaoPatio;
     }
-    public void gerarIdentificador(int posicao){
-        this.identificador = this.posicao+"."+posicao;
+    public void gerarIdentificador(int posicaoPilha){
+        this.identificador = this.posicaoPatio+"."+posicaoPilha;
     }
     public TipoCarga getTipoCarga() {
         return tipoCarga;
@@ -39,11 +39,11 @@ public class Conteiner {
     public void setPesoCarga(float pesoCarga) {
         this.pesoCarga = pesoCarga;
     }
-    public char getPosicao() {
-        return posicao;
+    public char getPosicaoPatio() {
+        return posicaoPatio;
     }
-    public void setPosicao(char posicao) {
-        this.posicao = posicao;
+    public void setPosicaoPatio(char posicaoPatio) {
+        this.posicaoPatio = posicaoPatio;
     }
     public TipoOperacao getTipoOperacao() {
         return tipoOperacao;

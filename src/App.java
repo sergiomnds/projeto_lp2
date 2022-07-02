@@ -24,12 +24,14 @@ public class App {
                 String nomeProprietario;
                 float pesoCarga;
                 char posicao;
+
                 System.out.println("Selecione o tipo da carga: ");
                 for(TipoCarga t: TipoCarga.values()){
                     System.out.println(t.ordinal()+" - "+t.name());
                 }
                 int tipoCargaSelecionada = in.nextInt();
                 tipoCarga = TipoCarga.values()[tipoCargaSelecionada];
+
                 System.out.println("Selecione o tipo da operação: ");
                 for(TipoOperacao t: TipoOperacao.values()){
                     System.out.println(t.ordinal()+" - "+t.name());
@@ -55,7 +57,6 @@ public class App {
                 }
                 break;
                 case 3:
-
                 System.out.println("###########################################################");
                 System.out.println("# A - Dados do Conteiner no Topo                          #");
                 System.out.println("# B - Quantidade de Conteineres por Tipo de Carga         #");
@@ -63,10 +64,11 @@ public class App {
                 System.out.println("# D - Quantidade de Conteineres por Tipo de Operação      #");
                 System.out.println("# E - Posições de Empilhamento Vazias                     #");
                 System.out.println("###########################################################");
-    
+                
+                /*
                 System.out.println("Digite a opção desejada: ");
                 char opcao2 = in.next().toUpperCase().charAt(0);
-                /* 
+                 
                 switch(opcao2){
                     case 'A':
                     System.out.println("Digite o Identificador da Pilha:");

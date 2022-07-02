@@ -2,15 +2,13 @@ import java.util.Stack;
 
 public class Pilha {
 
-    Stack pilha= new Stack<>();
+    Stack<Conteiner> pilha= new Stack<>();
     private int contador = 1;
-    int limite = 6;
-    Pilha(){
-    }
+    int limiteConteiners = 6;
 
     public boolean empilhar(Conteiner conteiner){
 
-        if(pilha.size() < limite){
+        if(pilha.size() < limiteConteiners){
             conteiner.gerarIdentificador(contador);
             pilha.push(conteiner);
             contador++;
@@ -27,11 +25,10 @@ public class Pilha {
             return false;
         }
 
-        Stack<Conteiner> pilhaAux = new Stack<>();
-        Conteiner conteiner = null;
+        Stack<Conteiner> pilhaAux = new Stack<Conteiner>();
         Boolean encontrou = false;
         for(int i = 0; i < pilha.size(); i++){
-            conteiner = (Conteiner) pilha.pop();
+            Conteiner conteiner = pilha.pop();
             if(conteiner.getIdentificador().equals(indentificador)){
                 encontrou = true;
                 break;
