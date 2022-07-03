@@ -1,8 +1,8 @@
 public enum TipoCarga {
     SECA("Seca"),
     COMMODIT("Commodit"),
-    PERIGOSO("Perigoso"),
-    PERECIVEL("Perecivel");
+    PERIGOSO("Produtos Perigosos"),
+    PERECIVEL("Produtos Perecivel");
     private String descricao;
 
     TipoCarga(String descricao) {

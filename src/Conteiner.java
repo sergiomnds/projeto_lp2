@@ -1,10 +1,10 @@
 public class Conteiner {
-    TipoCarga tipoCarga;
-    TipoOperacao tipoOperacao;
-    String identificador;
-    String nomeProprietario;
-    float pesoCarga;
-    char posicaoPatio;
+    private TipoCarga tipoCarga;
+    private TipoOperacao tipoOperacao;
+    private String identificador;
+    private String nomeProprietario;
+    private float pesoCarga;
+    private char posicaoPatio;
     public Conteiner(TipoCarga tipoCarga, TipoOperacao tipoOperacao, String nomeProprietario, float pesoCarga, char posicaoPatio) {
         this.tipoCarga = tipoCarga;
         this.tipoOperacao = tipoOperacao;
@@ -50,6 +50,15 @@ public class Conteiner {
     }
     public void setTipoOperacao(TipoOperacao tipoOperacao) {
         this.tipoOperacao = tipoOperacao;
+    }
+
+    public String toString(){
+        return "Conteiner: "+this.identificador+"\n"+
+                "Tipo de carga: "+this.tipoCarga.getDescricao()+"\n"+
+                "Tipo de operação: "+this.tipoOperacao.getDescricao()+"\n"+
+                "Nome do proprietário: "+this.nomeProprietario+"\n"+
+                "Peso da carga: "+this.pesoCarga+"\n"+
+                "Posição no patio: "+this.posicaoPatio+"\n";
     }
 
 }
