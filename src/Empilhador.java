@@ -3,12 +3,12 @@ import java.util.Map;
 
 public class Empilhador {
     private Map<Character, Pilha> pilhas = new HashMap<>();
-    private int limiteEmpilhamento=6;
+    private int limiteEmpilhamento = 6;
 
     Empilhador() {
         for (int i = 0; i < 12; i++) {
             char letra = (char) (i + 65);
-            pilhas.put(letra, new Pilha(letra,limiteEmpilhamento));
+            pilhas.put(letra, new Pilha(letra, limiteEmpilhamento));
         }
     }
 
@@ -55,19 +55,21 @@ public class Empilhador {
 
         return qauntidadePorTipoCarga;
     }
-    public Map<String,Integer> getQuantidadePorTipoOperacao(){
-        Map<String,Integer> quantidadePorTipoOperacao = new HashMap<>();
-        for(TipoOperacao t : TipoOperacao.values()){
+
+    public Map<String, Integer> getQuantidadePorTipoOperacao() {
+        Map<String, Integer> quantidadePorTipoOperacao = new HashMap<>();
+        for (TipoOperacao t : TipoOperacao.values()) {
             int quantidade = 0;
-            for(Pilha pilha : pilhas.values()){
+            for (Pilha pilha : pilhas.values()) {
                 quantidade += pilha.getQuantidadePorTipoOperacao(t);
             }
-            quantidadePorTipoOperacao.put(t.getDescricao(),quantidade);
+            quantidadePorTipoOperacao.put(t.getDescricao(), quantidade);
         }
         return quantidadePorTipoOperacao;
     }
-    public Map<String,Float> getPesoTotalPorTipoCarga() {
-        Map<String,Float> pesoTotalPorTipoCarga = new HashMap<>();
+
+    public Map<String, Float> getPesoTotalPorTipoCarga() {
+        Map<String, Float> pesoTotalPorTipoCarga = new HashMap<>();
         for (TipoCarga t : TipoCarga.values()) {
             float peso = 0;
             for (Pilha pilha : pilhas.values()) {
@@ -79,57 +81,58 @@ public class Empilhador {
         return pesoTotalPorTipoCarga;
     }
 
-    public String getPilhasVazias(){
+    public String getPilhasVazias() {
         String pilhasVazias = "";
-        for(Pilha pilha : pilhas.values()){
-            if(pilha.quantidadeConteiners() == 0){
-                pilhasVazias += " "+pilha.getNome();
+        for (Pilha pilha : pilhas.values()) {
+            if (pilha.quantidadeConteiners() == 0) {
+                pilhasVazias += " " + pilha.getNome();
             }
         }
         return pilhasVazias;
     }
-    
-    public String getGraficoPosicoes(){
-        String grafico = "Relação de posições e seus conteiners:\n\n";
-        Map<Character,Integer> quantidadePorPilha = new HashMap<>();
+
+    public String getGraficoPosicoes() {
+        String grafico = "Relação de posições e seus contêineres:\n\n";
+        Map<Character, Integer> quantidadePorPilha = new HashMap<>();
 
         for (Pilha pilha : pilhas.values()) {
             quantidadePorPilha.put(pilha.getNome(), pilha.quantidadeConteiners());
         }
-        for (int j = limiteEmpilhamento; j >0 ; j--) {
-            for (int i = 0+65; i < 6+65; i++) {
-                char letra = (char) i ;
-                if(quantidadePorPilha.get(letra)>=j){
+        for (int j = limiteEmpilhamento; j > 0; j--) {
+            for (int i = 0 + 65; i < 6 + 65; i++) {
+                char letra = (char) i;
+                if (quantidadePorPilha.get(letra) >= j) {
                     grafico += "|█|   ";
-                }else{
+                } else {
                     grafico += "| |   ";
                 }
             }
             grafico += "\n";
         }
-        for (int i = 0+65; i < 6+65; i++) {
-            char letra = (char) i ;
-            grafico +=" "+letra+"    ";
+        for (int i = 0 + 65; i < 6 + 65; i++) {
+            char letra = (char) i;
+            grafico += " " + letra + "    ";
         }
         grafico += "\n\n";
-        for (int j = limiteEmpilhamento; j >0 ; j--) {
-            for (int i = 6+65; i < 12+65; i++) {
-                char letra = (char) i ;
-                if(quantidadePorPilha.get(letra)>=j){
+        for (int j = limiteEmpilhamento; j > 0; j--) {
+            for (int i = 6 + 65; i < 12 + 65; i++) {
+                char letra = (char) i;
+                if (quantidadePorPilha.get(letra) >= j) {
                     grafico += "|█|   ";
-                }else{
+                } else {
                     grafico += "| |   ";
                 }
             }
             grafico += "\n";
         }
-        for (int i = 6+65; i < 12+65; i++) {
-            char letra = (char) i ;
-            grafico +=" "+letra+"    ";
+        for (int i = 6 + 65; i < 12 + 65; i++) {
+            char letra = (char) i;
+            grafico += " " + letra + "    ";
         }
         grafico += "\n\n";
         return grafico;
     }
+
     public boolean hasPilha(char posicao) {
         return pilhas.containsKey(posicao);
     }

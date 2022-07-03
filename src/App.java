@@ -1,3 +1,4 @@
+import java.util.Map;
 import java.util.Scanner;
 
 public class App {
@@ -5,12 +6,12 @@ public class App {
         Scanner in = new Scanner(System.in);
         Empilhador empilhador = new Empilhador();
         boolean sair = false;
-        System.out.println("Bem vindo ao gestor de Conteiner automatizado");
+        System.out.println("Bem vindo ao gestor de Contêiner Automatizado");
         while (!sair) {
             System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
-            System.out.println("▒▒ 1 - Empilhar Conteiner                 ▒▒");
-            System.out.println("▒▒ 2 - Desempilhar Conteiner              ▒▒");
-            System.out.println("▒▒ 3 - Consultar Conteineres              ▒▒");
+            System.out.println("▒▒ 1 - Empilhar Contêiner                 ▒▒");
+            System.out.println("▒▒ 2 - Desempilhar Contêiner              ▒▒");
+            System.out.println("▒▒ 3 - Consultar Contêineres              ▒▒");
             System.out.println("▒▒ 4 - Sair                               ▒▒");
             System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
             int opcao = 0;
@@ -23,7 +24,7 @@ public class App {
                     executado = true;
                 } catch (Exception e) {
                     in = new Scanner(System.in);// reseta o scanner para que o usuario possa tentar novamente
-                    System.out.println("Opção inválida, tente Novamente");
+                    System.out.println("Opção inválida, tente novamente!");
                     continue;
                 }
             } while (!executado);
@@ -32,7 +33,7 @@ public class App {
                 try {
                     switch (opcao) {
                         default:
-                            System.out.println("Opção inválida, tente Novamente");
+                            System.out.println("Opção inválida, tente novamente!");
                             break;
                         case 1:
                             TipoCarga tipoCarga = null;
@@ -54,7 +55,7 @@ public class App {
                                 } catch (Exception e) {
                                     in = new Scanner(System.in);// reseta o scanner para que o usuario possa tentar
                                                                 // novamente
-                                    System.out.println("Carga inválida, tente Novamente");
+                                    System.out.println("Carga inválida, tente novamente!");
                                     continue;
                                 }
                             } while (!valido);
@@ -71,7 +72,7 @@ public class App {
                                     valido = true;
                                 } catch (Exception e) {
                                     in = new Scanner(System.in);
-                                    System.out.println("Operação inválida, tente Novamente");
+                                    System.out.println("Operação inválida, tente novamente");
                                     continue;
                                 }
                             } while (!valido);
@@ -84,7 +85,7 @@ public class App {
                                     valido = true;
                                 } catch (Exception e) {
                                     in = new Scanner(System.in);
-                                    System.out.println("Nome inválido, tente Novamente");
+                                    System.out.println("Nome inválido, tente novamente!");
                                     continue;
                                 }
                             } while (!valido);
@@ -96,26 +97,26 @@ public class App {
                                     valido = true;
                                 } catch (Exception e) {
                                     in = new Scanner(System.in);
-                                    System.out.println("Peso inválido, tente Novamente");
+                                    System.out.println("Peso inválido, tente novamente");
                                     continue;
                                 }
                             } while (!valido);
                             valido = false;
                             do {
                                 try {
-                                    System.out.println("Digite a posição do conteiner, entre (A e L): ");
+                                    System.out.println("Digite a posição do contêiner, entre A e L: ");
                                     posicao = in.next().toUpperCase().charAt(0);
 
                                     Conteiner conteiner = new Conteiner(tipoCarga, tipoOperacao, nomeProprietario,
                                             pesoCarga,
                                             posicao);
                                     if (empilhador.empilhar(posicao, conteiner)) {
-                                        System.out.println("Conteiner empilhado com sucesso!");
+                                        System.out.println("Contêiner empilhado com sucesso!");
                                     }
                                     valido = true;
                                 } catch (Exception e) {
                                     in = new Scanner(System.in);
-                                    System.out.println("Posição inválida, tente Novamente");
+                                    System.out.println("Posição inválida, tente novamente");
                                     continue;
                                 }
                             } while (!valido);
@@ -124,25 +125,25 @@ public class App {
                             valido = false;
                             do {
                                 try {
-                                    System.out.println("Digite o identificador do conteiner que deseja desempilhar: ");
+                                    System.out.println("Digite o identificador do contêiner que deseja desempilhar: ");
                                     String identificador = in.next();
                                     if (empilhador.desempilhar(identificador)) {
-                                        System.out.println("Conteiner desempilhado com sucesso!");
+                                        System.out.println("Contêiner desempilhado com sucesso!");
                                     }
                                     valido = true;
                                 } catch (Exception e) {
                                     in = new Scanner(System.in);
-                                    System.out.println("Identificador inválido, tente Novamente");
+                                    System.out.println("Identificador inválido, tente novamente");
                                     continue;
                                 }
                             } while (!valido);
                             break;
                         case 3:
                             System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
-                            System.out.println("▒▒ A - Dados do Conteiner no Topo                          ▒▒");
-                            System.out.println("▒▒ B - Quantidade de Conteineres por Tipo de Carga         ▒▒");
+                            System.out.println("▒▒ A - Dados do Contêiner no Topo                          ▒▒");
+                            System.out.println("▒▒ B - Quantidade de Contêineres por Tipo de Carga         ▒▒");
                             System.out.println("▒▒ C - Peso total por Tipo de Carga                        ▒▒");
-                            System.out.println("▒▒ D - Quantidade de Conteineres por Tipo de Operação      ▒▒");
+                            System.out.println("▒▒ D - Quantidade de Contêineres por Tipo de Operação      ▒▒");
                             System.out.println("▒▒ E - Posições de Empilhamento Vazias                     ▒▒");
                             System.out.println("▒▒ F - Gráfico das posições ocupadas                       ▒▒");
                             System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
@@ -152,39 +153,54 @@ public class App {
 
                             switch (opcao) {
                                 case 'A':
-                                valido = false;
-                                do {
-                                    try {
-                                        System.out.println("Digite a posição do a ser consultada, entre (A e L): ");
-                                        posicao = in.next().toUpperCase().charAt(0);
-    
-                                        System.out.println(empilhador.informacaoConteinerTopo(posicao));
-                                        valido = true;
-                                    } catch (Exception e) {
-                                        in = new Scanner(System.in);
-                                        System.out.println("Posição inválida, tente Novamente");
-                                        continue;
-                                    }
-                                } while (!valido);
-                                   
+                                    valido = false;
+                                    do {
+                                        try {
+                                            System.out.println("Digite a posição a ser consultada, entre A e L: ");
+                                            posicao = in.next().toUpperCase().charAt(0);
+
+                                            System.out.println(empilhador.informacaoConteinerTopo(posicao));
+                                            valido = true;
+                                        } catch (Exception e) {
+                                            in = new Scanner(System.in);
+                                            System.out.println("Posição inválida, tente novamente");
+                                            continue;
+                                        }
+                                    } while (!valido);
+
                                     break;
                                 case 'B':
-                                    System.out.println(empilhador.getQuantidadePorTipoCarga());
+                                    System.out.println("Quantidade de Contêineres por Tipo de Carga: ");
+                                    Map<String, Integer> quantidadePorTipoCarga = empilhador
+                                            .getQuantidadePorTipoCarga();
+                                    for (Map.Entry<String, Integer> entry : quantidadePorTipoCarga.entrySet()) {
+                                        System.out.println(entry.getKey() + ": " + entry.getValue() + " Contêineres");
+                                    }
                                     break;
-                                 case 'C':
-                                     System.out.println(empilhador.getPesoTotalPorTipoCarga());
-                                     break;
-                                 case 'D':
-                                     System.out.println(empilhador.getQuantidadePorTipoOperacao());
-                                     break;
-                                 case 'E':
-                                     System.out.println("As Posições "+empilhador.getPilhasVazias()+" estão vazias e não possuem nenhum conteiner.");
-                                     break;
-                                 case 'F':
+                                case 'C':
+                                    System.out.println("Peso total por Tipo de Carga: ");
+                                    Map<String, Float> pesoTotalPorTipoCarga = empilhador.getPesoTotalPorTipoCarga();
+                                    for (Map.Entry<String, Float> entry : pesoTotalPorTipoCarga.entrySet()) {
+                                        System.out.println(entry.getKey() + ": " + entry.getValue() + " Kilos");
+                                    }
+                                    break;
+                                case 'D':
+                                    System.out.println("Quantidade de Contêineres por Tipo de Operação: ");
+                                    Map<String, Integer> quantidadePorTipoOperacao = empilhador
+                                            .getQuantidadePorTipoOperacao();
+                                    for (Map.Entry<String, Integer> entry : quantidadePorTipoOperacao.entrySet()) {
+                                        System.out.println(entry.getKey() + ": " + entry.getValue() + " Contêineres");
+                                    }
+                                    break;
+                                case 'E':
+                                    System.out.println("As Posições " + empilhador.getPilhasVazias()
+                                            + " estão vazias e não possuem nenhum contêiner.");
+                                    break;
+                                case 'F':
                                     System.out.println(empilhador.getGraficoPosicoes());
                                     break;
                                 default:
-                                    System.out.println("Opção inválida, tente Novamente");
+                                    System.out.println("Opção inválida, tente novamente");
                                     break;
                             }
                             break;
@@ -193,9 +209,9 @@ public class App {
                     }
                     executado = true;
                 } catch (Exception e) {
-                    in = new Scanner(System.in);// reseta o scanner para que o usuario possa tentar novamente
-                    System.out.println("Erro inesperado, Falha ao executar operação, por favor, tente Novamente");
-                    System.out.println("Caso o erro persiste, contate o suporte");
+                    in = new Scanner(System.in);// * reseta o scanner para que o usuario possa tentar novamente
+                    System.out.println("Erro inesperado, Falha ao executar operação, por favor, tente novamente");
+                    System.out.println("Caso o erro persista, contate o suporte");
                     System.out.println("Erro:");
                     System.out.println(e.getMessage());
                     continue;
@@ -203,6 +219,6 @@ public class App {
             } while (!executado);
 
         }
-
+        in.close();
     }
 }
