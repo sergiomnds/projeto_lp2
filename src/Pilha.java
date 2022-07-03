@@ -1,6 +1,5 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Stack;
 
 public class Pilha {
 
@@ -13,9 +12,11 @@ public class Pilha {
         this.nome = nome;
         this.limiteConteiners = limiteConteiners;
     }
+
     public char getNome() {
         return nome;
     }
+
     public boolean empilhar(Conteiner conteiner) {
 
         if (pilha.size() < limiteConteiners) {
