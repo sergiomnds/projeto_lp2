@@ -2,49 +2,79 @@ import java.util.Stack;
 
 public class Pilha {
 
-    Stack<Conteiner> pilha= new Stack<>();
+    Stack<Conteiner> pilha = new Stack<>();
     private int contador = 1;
     int limiteConteiners = 6;
 
-    public boolean empilhar(Conteiner conteiner){
+    public boolean empilhar(Conteiner conteiner) {
 
-        if(pilha.size() < limiteConteiners){
+        if (pilha.size() < limiteConteiners) {
             conteiner.gerarIdentificador(contador);
             pilha.push(conteiner);
             contador++;
             return true;
         }
-            System.out.println("Pilha cheia");
-        
+        System.out.println("Pilha cheia");
+
         return false;
     }
-    
-    public boolean desempilhar(String indentificador){
-        if(pilha.size() == 0){
+
+    public boolean desempilhar(String indentificador) {
+        if (pilha.size() == 0) {
             System.out.println("Pilha vazia");
             return false;
         }
 
         Stack<Conteiner> pilhaAux = new Stack<Conteiner>();
         Boolean encontrou = false;
-        for(int i = 0; i < pilha.size(); i++){
+        for (int i = 0; i < pilha.size(); i++) {
             Conteiner conteiner = pilha.pop();
-            if(conteiner.getIdentificador().equals(indentificador)){
+            if (conteiner.getIdentificador().equals(indentificador)) {
                 encontrou = true;
                 break;
             }
             pilhaAux.push(conteiner);
         }
 
-        for(int i = 0; i < pilhaAux.size(); i++){
+        for (int i = 0; i < pilhaAux.size(); i++) {
             pilha.push(pilhaAux.pop());
         }
 
-        if(!encontrou){
+        if (!encontrou) {
             System.out.println("Conteiner não encontrado");
         }
 
         return encontrou;
-        
+
+    }
+
+    public int quantidadePorTipoCarga(TipoCarga tipoCarga) {
+        int quantidade = 0;
+        for (int i = 0; i < pilha.size(); i++) {
+            if (pilha.get(i).getTipoCarga() == tipoCarga) {
+                quantidade++;
+            }
+        }
+        return quantidade;
+    }
+
+    public float pesoTotalPorTipoCarga(TipoCarga tipoCarga) {
+        float pesoTotal = 0;
+        for (int i = 0; i < pilha.size(); i++) {
+            if (pilha.get(i).getTipoCarga() == tipoCarga) {
+                pesoTotal += pilha.get(i).getPesoCarga();
+            }
+        }
+        return pesoTotal;
+    }
+
+    public int quantidadePorTipoOperacao(TipoOperacao tipoOperacao) {
+        int quantidade = 0;
+        for (int i = 0; i < pilha.size(); i++) {
+            if (pilha.get(i).getTipoOperacao() == tipoOperacao) {
+                quantidade++;
+            }
+        }
+        return quantidade;
     }
 }
