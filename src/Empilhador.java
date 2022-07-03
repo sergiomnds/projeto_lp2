@@ -99,35 +99,39 @@ public class Empilhador {
             quantidadePorPilha.put(pilha.getNome(), pilha.quantidadeConteiners());
         }
         for (int j = limiteEmpilhamento; j > 0; j--) {
+            grafico += j+" _";
             for (int i = 0 + 65; i < 6 + 65; i++) {
                 char letra = (char) i;
                 if (quantidadePorPilha.get(letra) >= j) {
-                    grafico += "|█|   ";
+                    grafico += "█_";
                 } else {
-                    grafico += "| |   ";
+                    grafico += "__";
                 }
             }
             grafico += "\n";
         }
+        grafico +="  ";
         for (int i = 0 + 65; i < 6 + 65; i++) {
             char letra = (char) i;
-            grafico += " " + letra + "    ";
+            grafico += " " + letra;
         }
         grafico += "\n\n";
         for (int j = limiteEmpilhamento; j > 0; j--) {
+            grafico += j+" _";
             for (int i = 6 + 65; i < 12 + 65; i++) {
                 char letra = (char) i;
                 if (quantidadePorPilha.get(letra) >= j) {
-                    grafico += "|█|   ";
+                    grafico += "█_";
                 } else {
-                    grafico += "| |   ";
+                    grafico += "__";
                 }
             }
             grafico += "\n";
         }
+        grafico +="  ";
         for (int i = 6 + 65; i < 12 + 65; i++) {
             char letra = (char) i;
-            grafico += " " + letra + "    ";
+            grafico += " " + letra;
         }
         grafico += "\n\n";
         return grafico;
