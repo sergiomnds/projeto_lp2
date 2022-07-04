@@ -193,8 +193,12 @@ public class App {
                                     }
                                     break;
                                 case 'E':
-                                    System.out.println("As Posições " + empilhador.getPilhasVazias()
-                                            + " estão vazias e não possuem nenhum contêiner.");
+                                    if (!empilhador.getPilhasVazias().isEmpty()) {
+                                        System.out.println("As Posições " + empilhador.getPilhasVazias()
+                                                + " estão vazias e não possuem nenhum contêiner.");
+                                    } else {
+                                        System.out.println("Não há nenhuma posição vazia.");
+                                    }
                                     break;
                                 case 'F':
                                     System.out.println(empilhador.getGraficoPosicoes());
