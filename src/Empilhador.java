@@ -1,3 +1,8 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,9 +11,12 @@ public class Empilhador {
     private int limiteEmpilhamento = 6;
 
     Empilhador() {
-        for (int i = 0; i < 12; i++) {
-            char letra = (char) (i + 65);
-            pilhas.put(letra, new Pilha(letra, limiteEmpilhamento));
+        boolean conseguiuLerDados = this.lerDados();
+        if (!conseguiuLerDados) {
+            for (int i = 0; i < 12; i++) {
+                char letra = (char) (i + 65);
+                pilhas.put(letra, new Pilha(letra, limiteEmpilhamento));
+            }
         }
     }
 
@@ -24,7 +32,11 @@ public class Empilhador {
         this.throwsIfNotHasPilha(posicao);
 
         Pilha pilha = pilhas.get(posicao);
-        return pilha.empilhar(conteiner);
+        boolean resposta = pilha.empilhar(conteiner);
+        if (resposta) {
+            this.salvarDados();
+        }
+        return resposta;
     }
 
     public boolean desempilhar(String indentificador) throws IllegalArgumentException {
@@ -32,7 +44,12 @@ public class Empilhador {
 
         this.throwsIfNotHasPilha(posicao);
 
-        return pilhas.get(posicao).desempilhar(indentificador);
+        boolean resposta = pilhas.get(posicao).desempilhar(indentificador);
+
+        if (resposta) {
+            this.salvarDados();
+        }
+        return resposta;
 
     }
 
@@ -99,7 +116,7 @@ public class Empilhador {
             quantidadePorPilha.put(pilha.getNome(), pilha.quantidadeConteiners());
         }
         for (int j = limiteEmpilhamento; j > 0; j--) {
-            grafico += j+" _";
+            grafico += j + " _";
             for (int i = 0 + 65; i < 6 + 65; i++) {
                 char letra = (char) i;
                 if (quantidadePorPilha.get(letra) >= j) {
@@ -110,14 +127,14 @@ public class Empilhador {
             }
             grafico += "\n";
         }
-        grafico +="  ";
+        grafico += "  ";
         for (int i = 0 + 65; i < 6 + 65; i++) {
             char letra = (char) i;
             grafico += " " + letra;
         }
         grafico += "\n\n";
         for (int j = limiteEmpilhamento; j > 0; j--) {
-            grafico += j+" _";
+            grafico += j + " _";
             for (int i = 6 + 65; i < 12 + 65; i++) {
                 char letra = (char) i;
                 if (quantidadePorPilha.get(letra) >= j) {
@@ -128,7 +145,7 @@ public class Empilhador {
             }
             grafico += "\n";
         }
-        grafico +="  ";
+        grafico += "  ";
         for (int i = 6 + 65; i < 12 + 65; i++) {
             char letra = (char) i;
             grafico += " " + letra;
@@ -139,5 +156,48 @@ public class Empilhador {
 
     public boolean hasPilha(char posicao) {
         return pilhas.containsKey(posicao);
+    }
+
+    public boolean salvarDados() {
+        try {
+            File output = new File("database");
+            if (!output.exists()) {
+                output.createNewFile();
+            }
+            FileOutputStream fos = new FileOutputStream(output);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(pilhas);
+            oos.flush();
+            oos.close();
+            fos.close();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public boolean lerDados() {
+        try {
+            File input = new File("database");
+            if (!input.exists()) {
+                return false;
+            }
+            FileInputStream fis = new FileInputStream(input);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            pilhas = (Map<Character, Pilha>) ois.readObject();
+
+            ois.close();
+            fis.close();
+            if(pilhas == null){
+                return false;
+            }
+        } catch (Exception e) {
+            
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
 }

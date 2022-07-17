@@ -1,4 +1,6 @@
-public class Conteiner {
+import java.io.Serializable;
+
+public class Conteiner implements Serializable {
     private TipoCarga tipoCarga;
     private TipoOperacao tipoOperacao;
     private String identificador;

@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class Pilha {
+public class Pilha implements Serializable{
 
     private Deque<Conteiner> pilha = new ArrayDeque<>();
     private int contador = 1;
