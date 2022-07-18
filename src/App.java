@@ -1,7 +1,9 @@
 import javax.swing.JOptionPane;
 
+
 public class App {
     public static void main(String[] args) throws Exception {
+
         Empilhador empilhador = new Empilhador();
         boolean sair = false;
         while (!sair) {

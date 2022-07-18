@@ -206,8 +206,9 @@ public class Empilhador {
 
     public String getStringQuantidadePorTipodeCarga() {
         String quantidadePorTipoCarga = "";
+        Map<String, Integer> qtdTipoCarga = getQuantidadePorTipoCarga();
         for (TipoCarga t : TipoCarga.values()) {
-            quantidadePorTipoCarga += t.getDescricao() + ": " + getQuantidadePorTipoCarga().get(t.getDescricao())
+            quantidadePorTipoCarga += t.getDescricao() + ": " + qtdTipoCarga.get(t.getDescricao())
                     + " Contêiner(es)\n";
         }
         return quantidadePorTipoCarga;
@@ -215,8 +216,9 @@ public class Empilhador {
 
     public String getStringQuantidadePorTipoOperacao() {
         String quantidadePorTipoOperacao = "";
+        Map<String, Integer> qtdTipoOperacao = getQuantidadePorTipoOperacao();
         for (TipoOperacao t : TipoOperacao.values()) {
-            quantidadePorTipoOperacao += t.getDescricao() + ": " + getQuantidadePorTipoOperacao().get(t.getDescricao())
+            quantidadePorTipoOperacao += t.getDescricao() + ": " + qtdTipoOperacao.get(t.getDescricao())
                     + " Contêiner(es)\n";
         }
         return quantidadePorTipoOperacao;
@@ -224,8 +226,9 @@ public class Empilhador {
 
     public String getStringPesoTotalPorTipoCarga() {
         String pesoTotalPorTipoCarga = "";
+        Map<String, Float> pesoTipoCarga = getPesoTotalPorTipoCarga();
         for (TipoCarga t : TipoCarga.values()) {
-            pesoTotalPorTipoCarga += t.getDescricao() + ": " + getPesoTotalPorTipoCarga().get(t.getDescricao())
+            pesoTotalPorTipoCarga += t.getDescricao() + ": " + pesoTipoCarga.get(t.getDescricao())
                     + " Kilos\n";
         }
         return pesoTotalPorTipoCarga;

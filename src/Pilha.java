@@ -48,7 +48,8 @@ public class Pilha implements Serializable {
 
         Deque<Conteiner> pilhaAux = new ArrayDeque<Conteiner>();
         Boolean encontrou = false;
-        for (int i = 0; i < pilha.size(); i++) {
+        int size = pilha.size();
+        for (int i = 0; i < size; i++) {
             Conteiner conteiner = pilha.pop();
             if (conteiner.getIdentificador().equals(indentificador)) {
                 encontrou = true;
@@ -56,8 +57,8 @@ public class Pilha implements Serializable {
             }
             pilhaAux.push(conteiner);
         }
-
-        for (int i = 0; i < pilhaAux.size(); i++) {
+        size = pilhaAux.size();
+        for (int i = 0; i < size; i++) {
             pilha.push(pilhaAux.pop());
         }
 
@@ -75,16 +76,17 @@ public class Pilha implements Serializable {
 
     public int getQuantidadePorTipoCarga(TipoCarga t) {
         int quantidade = 0;
-
         Deque<Conteiner> pilhaAux = new ArrayDeque<Conteiner>();
-        for (int i = 0; i < pilha.size(); i++) {
+        int size = pilha.size();
+        for (int i = 0; i < size; i++) {
             Conteiner conteiner = pilha.pop();
             if (conteiner.getTipoCarga() == t) {
                 quantidade++;
             }
             pilhaAux.push(conteiner);
         }
-        for (int i = 0; i < pilhaAux.size(); i++) {
+        size = pilhaAux.size();
+        for (int i = 0; i < size; i++) {
             pilha.push(pilhaAux.pop());
         }
 
@@ -94,14 +96,16 @@ public class Pilha implements Serializable {
     public int getQuantidadePorTipoOperacao(TipoOperacao t) {
         int quantidade = 0;
         Deque<Conteiner> pilhaAux = new ArrayDeque<Conteiner>();
-        for (int i = 0; i < pilha.size(); i++) {
+        int size = pilha.size();
+        for (int i = 0; i < size; i++) {
             Conteiner conteiner = pilha.pop();
             if (conteiner.getTipoOperacao() == t) {
                 quantidade++;
             }
             pilhaAux.push(conteiner);
         }
-        for (int i = 0; i < pilhaAux.size(); i++) {
+        size = pilhaAux.size();
+        for (int i = 0; i < size; i++) {
             pilha.push(pilhaAux.pop());
         }
         return quantidade;
@@ -111,14 +115,16 @@ public class Pilha implements Serializable {
         float peso = 0;
 
         Deque<Conteiner> pilhaAux = new ArrayDeque<Conteiner>();
-        for (int i = 0; i < pilha.size(); i++) {
+        int size = pilha.size();
+        for (int i = 0; i < size; i++) {
             Conteiner conteiner = pilha.pop();
             if (conteiner.getTipoCarga() == t) {
                 peso += conteiner.getPesoCarga();
             }
             pilhaAux.push(conteiner);
         }
-        for (int i = 0; i < pilhaAux.size(); i++) {
+         size = pilhaAux.size();
+        for (int i = 0; i < size; i++) {
             pilha.push(pilhaAux.pop());
         }
 
