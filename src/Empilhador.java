@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class Empilhador {
     private Map<Character, Pilha> pilhas = new HashMap<>();
@@ -55,7 +56,7 @@ public class Empilhador {
 
     private void throwsIfNotHasPilha(char posicao) {
         if (!this.hasPilha(posicao)) {
-            System.out.println("posição inválida");
+            JOptionPane.showMessageDialog(null, "Posição inválida!", "Erro", JOptionPane.ERROR_MESSAGE);
             throw new IllegalArgumentException("posição inválida");
         }
     }
@@ -173,7 +174,7 @@ public class Empilhador {
             fos.close();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -196,7 +197,7 @@ public class Empilhador {
             }
         } catch (Exception e) {
 
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;

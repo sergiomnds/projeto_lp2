@@ -1,8 +1,9 @@
 import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import javax.swing.JOptionPane;
 
-public class Pilha implements Serializable{
+public class Pilha implements Serializable {
 
     private Deque<Conteiner> pilha = new ArrayDeque<>();
     private int contador = 1;
@@ -26,14 +27,14 @@ public class Pilha implements Serializable{
             contador++;
             return true;
         }
-        System.out.println("Pilha cheia");
+        JOptionPane.showMessageDialog(null, "Pilha Cheia!", "Erro", JOptionPane.ERROR_MESSAGE);
 
         return false;
     }
 
     public Conteiner verTopo() {
         if (pilha.isEmpty()) {
-            System.out.println("Pilha vazia");
+            JOptionPane.showMessageDialog(null, "Pilha Vazia!", "Erro", JOptionPane.ERROR_MESSAGE);
             return null;
         }
         return pilha.peek();
@@ -41,7 +42,7 @@ public class Pilha implements Serializable{
 
     public boolean desempilhar(String indentificador) {
         if (pilha.isEmpty()) {
-            System.out.println("Pilha vazia");
+            JOptionPane.showMessageDialog(null, "Pilha vazia", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
@@ -61,7 +62,7 @@ public class Pilha implements Serializable{
         }
 
         if (!encontrou) {
-            System.out.println("Conteiner não encontrado");
+            JOptionPane.showMessageDialog(null, "Contêiner não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
         return encontrou;
