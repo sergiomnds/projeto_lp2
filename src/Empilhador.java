@@ -56,7 +56,8 @@ public class Empilhador {
 
     private void throwsIfNotHasPilha(char posicao) {
         if (!this.hasPilha(posicao)) {
-            JOptionPane.showMessageDialog(null, "Posição inválida!", "Erro", JOptionPane.ERROR_MESSAGE);
+            // JOptionPane.showMessageDialog(null, "Posição inválida!", "Erro",
+            // JOptionPane.ERROR_MESSAGE);
             throw new IllegalArgumentException("posição inválida");
         }
     }

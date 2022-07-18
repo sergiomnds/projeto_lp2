@@ -172,7 +172,7 @@ public class App {
                             do {
                                 if (caseDois != null) {
                                     try {
-                                        String identificador = caseDois;
+                                        String identificador = caseDois.toUpperCase();
                                         if (empilhador.desempilhar(identificador)) {
                                             JOptionPane.showMessageDialog(null, "Contêiner Desempilhado com Sucesso!",
                                                     "GCA - Desempilhar Contêiner", JOptionPane.INFORMATION_MESSAGE);
@@ -209,10 +209,12 @@ public class App {
                                             if (caseTres != null) {
                                                 try {
                                                     posicao = caseTres.toUpperCase().charAt(0);
-                                                    JOptionPane.showMessageDialog(null,
-                                                            empilhador.informacaoConteinerTopo(posicao),
-                                                            "GCA - Consultar Contêiner",
-                                                            JOptionPane.INFORMATION_MESSAGE);
+                                                    if (empilhador.informacaoConteinerTopo(posicao) != null) {
+                                                        JOptionPane.showMessageDialog(null,
+                                                                empilhador.informacaoConteinerTopo(posicao),
+                                                                "GCA - Consultar Contêiner",
+                                                                JOptionPane.INFORMATION_MESSAGE);
+                                                    }
                                                     valido = true;
                                                 } catch (Exception e) {
                                                     JOptionPane.showMessageDialog(null,
