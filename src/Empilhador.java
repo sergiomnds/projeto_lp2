@@ -122,25 +122,26 @@ public class Empilhador {
                 if (quantidadePorPilha.get(letra) >= j) {
                     grafico += "█_";
                 } else {
-                    grafico += "__";
+                    grafico += "___";
                 }
             }
             grafico += "\n";
         }
-        grafico += "  ";
+        grafico += " ";
         for (int i = 0 + 65; i < 6 + 65; i++) {
             char letra = (char) i;
-            grafico += " " + letra;
+            grafico += "     " + letra;
         }
         grafico += "\n\n";
         for (int j = limiteEmpilhamento; j > 0; j--) {
             grafico += j + " _";
             for (int i = 6 + 65; i < 12 + 65; i++) {
                 char letra = (char) i;
+
                 if (quantidadePorPilha.get(letra) >= j) {
                     grafico += "█_";
                 } else {
-                    grafico += "__";
+                    grafico += "___";
                 }
             }
             grafico += "\n";
@@ -148,7 +149,7 @@ public class Empilhador {
         grafico += "  ";
         for (int i = 6 + 65; i < 12 + 65; i++) {
             char letra = (char) i;
-            grafico += " " + letra;
+            grafico += "     " + letra;
         }
         grafico += "\n\n";
         return grafico;
@@ -190,14 +191,41 @@ public class Empilhador {
 
             ois.close();
             fis.close();
-            if(pilhas == null){
+            if (pilhas == null) {
                 return false;
             }
         } catch (Exception e) {
-            
+
             System.out.println(e.getMessage());
             return false;
         }
         return true;
+    }
+
+    public String getStringQuantidadePorTipodeCarga() {
+        String quantidadePorTipoCarga = "";
+        for (TipoCarga t : TipoCarga.values()) {
+            quantidadePorTipoCarga += t.getDescricao() + ": " + getQuantidadePorTipoCarga().get(t.getDescricao())
+                    + " Contêiner(es)\n";
+        }
+        return quantidadePorTipoCarga;
+    }
+
+    public String getStringQuantidadePorTipoOperacao() {
+        String quantidadePorTipoOperacao = "";
+        for (TipoOperacao t : TipoOperacao.values()) {
+            quantidadePorTipoOperacao += t.getDescricao() + ": " + getQuantidadePorTipoOperacao().get(t.getDescricao())
+                    + " Contêiner(es)\n";
+        }
+        return quantidadePorTipoOperacao;
+    }
+
+    public String getStringPesoTotalPorTipoCarga() {
+        String pesoTotalPorTipoCarga = "";
+        for (TipoCarga t : TipoCarga.values()) {
+            pesoTotalPorTipoCarga += t.getDescricao() + ": " + getPesoTotalPorTipoCarga().get(t.getDescricao())
+                    + " Kilos\n";
+        }
+        return pesoTotalPorTipoCarga;
     }
 }
